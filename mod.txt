@@ -41,7 +41,8 @@ Actions
 			&<artificial_mass/structure.txt>/Part
 			&<damage_control/cockpit.txt>/Part
 			&<wireless_charger/cockpit.txt>/Part
-			&<emp_cannon/5in.txt>/Part
+			&<emp_cannon/emp.txt>/Part
+			&<fire_control/fire_control.txt>/Part
 		]
 	}
 	{

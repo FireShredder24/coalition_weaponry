@@ -14,6 +14,7 @@ Part : /BASE_PART
 	SelectionTypeByRotation = true
 	SelectionTypeID = "cannons"
 	MaxHealth = 30000
+	RequiresCategories = [fire_control]
 	InitialPenetrationResistance = 3
 	AllowedDoorLocations
 	[

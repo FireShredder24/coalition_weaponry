@@ -80,13 +80,13 @@ Parts
 	ImpulseMineIcon = &ImpulseMine
 	ImpulseMineDesc = "Similar to the warhead, but does little damage in exchange for extreme pushing."
 
-	RailTurretFS24 = "Railgun Turret"
+	RailTurretFS24 = "MAC Turret"
 	RailTurretFS24Icon = &RailTurretFS24
-	RailTurretFS24Desc = "A railgun in a roof turret!"
+	RailTurretFS24Desc = "A weapon that uses magnets to accelerate tungsten slugs to incredible velocities, tearing through everything in its path."
 
 	CorundumCarbide = "Boron Nitride Armor"
 	CorundumCarbideIcon = "Boron Nitride"
-	CorundumCarbideDesc = "A type of armor that is insanely hard, hard enough to stop a railgun slug.  But, the tradeoff is that the armor is extremely brittle, so the second railgun slug will go right through."
+	CorundumCarbideDesc = "A type of armor that is insanely hard, hard enough to stop a MAC round.  But, the tradeoff is that the armor is extremely brittle, so it can only withstand two shots before crumbling."
 	
 	CorundumCarbide2 = "Boron Nitride Armor 1x2"
 	CorundumCarbide2Icon = "Boron Nitride"
@@ -102,7 +102,7 @@ Parts
 
 	DamageControl = "Damage Control Center"
 	DamageControlIcon = "Damage Control"
-	DamageControlDesc = "A part that secretes a healing aura when powered!(repairs existing ship parts, does not build new ones)"
+	DamageControlDesc = "A part that secretes a healing aura when powered!(repairs existing ship parts, does not rebuild destroyed ones)"
 
 	WirelessCharger = "Wireless Charging Port"
 	WirelessChargerIcon = "Wireless Charger"
@@ -115,6 +115,10 @@ Parts
 	EMPCannonLarge = "Large EMP Cannon"
 	EMPCannonLargeIcon = "EMP Cannon"
 	EMPCannonLargeDesc = "A weapon that generates an electromagnetic pulse that disables enemy shields and electronics."
+
+	FireControl = "Fire Control"
+	FireControlIcon = "Fire Control Station"
+	FireControlDesc = "A crewed station that helps direct fire from more advanced weapons systems.  Boosts sensor radius.  Does not provide control of the ship."
 }
 EditorGroups
 {
