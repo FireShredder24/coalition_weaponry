@@ -8,14 +8,13 @@ Part : /BASE_PART
 	DescriptionKey = "Parts/RailTurretFS24Desc"
 	Cost = 100000
 	AIValue = 10
-	TypeCategories = [weapon, weapon_using_ammo]
+	TypeCategories = [weapon, weapon_using_ammo, is_crewed]
 	Size = [3, 3]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	SelectionTypeID = "cannons"
 	MaxHealth = 30000
 	InitialPenetrationResistance = 3
-	RequiresCategories = [sensors]
 	AllowedDoorLocations
 	[
 		[1, -1]
