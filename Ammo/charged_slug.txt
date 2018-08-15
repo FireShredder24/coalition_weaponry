@@ -1,0 +1,15 @@
+ID = charged_slug
+MaxCarried = 1
+MaxCarriedSprites = 1
+CarriedSprite
+{
+	AnimationFiles
+	[
+		"charged_slug1.png"
+		"charged_slug2.png"
+		"charged_slug3.png"
+	]
+	AnimationIntervel = 0.15
+	Size = [1, 1]
+}
+CarriedSpriteOffset = [0, .25]

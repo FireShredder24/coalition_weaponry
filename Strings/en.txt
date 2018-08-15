@@ -1,0 +1,122 @@
+Parts
+{
+	SniperLaser = "Laser Blaster Mk2"
+	SniperLaserIcon = "Laser Mk2"
+	SniperLaserDesc = "A longer range, penetrating version of the Small Laser.  Plus, it's blue."
+	
+	Aerogel = "Aerogel Armor"
+	AerogelIcon = "Aerogel"
+	AerogelDesc = "A lighter, less penetration-resistant type of armor that is mostly good at deflecting laser fire."
+	
+	AerogelWedge = "Aerogel Armor Wedge"
+	AerogelWedgeIcon = "Aerogel Wedge"
+	AerogelWedgeDesc = &AerogelDesc
+	
+	Aerogel2 = "Aerogel Armor 1x2"
+	Aerogel2Icon = "Aerogel 1x2"
+	Aerogel2Desc = &AerogelDesc
+
+	Plate = "Heavy Armor"
+	PlateIcon = &Plate
+	PlateDesc = "A heavy, layered type of armor that soaks up (vanilla) weapons fire easily."
+	
+	Aerogel2WedgeL = "Aerogel Armor 1x2 Wedge L"
+	Aerogel2WedgeLIcon = "Aerogel 1x2 L"
+	Aerogel2WedgeLDesc = &AerogelDesc
+	
+	Aerogel2WedgeR = "Aerogel Armor 1x2 Wedge R"
+	Aerogel2WedgeRIcon = "Aerogel 1x2 R"
+	Aerogel2WedgeRDesc = &AerogelDesc
+	
+	Machinegun = "Machinegun"
+	MachinegunIcon = "Machinegun"
+	MachinegunDesc = "Weaponized variant of the point defense system used to quickly disable shields."
+	
+	Plate2 = "Heavy Armor 1x2"
+	Plate2Icon = &Plate2
+	Plate2Desc = &PlateDesc
+	
+	SmallIntThruster = "Small Internal Thruster"
+	SmallIntThrusterIcon = "Internal Thruster"
+	SmallIntThrusterDesc = "A thruster that uses some wacky loophole in Special Relativity to propel the ship without a nozzle!"
+
+	Blink = "Blink Drive"
+	BlinkIcon = &Blink
+	BlinkDesc = "A part that, when detonated, will throw the ship in a random direction at high speed.  (depends on the size of the ship)"
+
+	Warhead = "Small Warhead"
+	WarheadIcon = &Warhead
+	WarheadDesc = "A part that, when destroyed by the enemy or self-destructed, will generate a large explosion."
+	
+	CIWS = "CIWS"
+	CIWSIcon = "CIWS"
+	CIWSDesc = "A Close-In Weapons System, used primarily to tear through enemy subsystems.  Weak against shields."
+
+	BunkRoom = "Dormitory"
+	BunkRoomIcon = "Dorm"
+	BunkRoomDesc = "Provides four beds in a small space.  Good for bachelors."
+
+	Railgun = "Railgun"
+	RailgunIcon = "Railgun"
+	RailgunDesc = "A super high-velocity weapon that accelerates hunks of tungsten to insane speeds.  Is capable of turning Cerberus into Swiss cheese from a kilometer and a half away when used in numbers."
+
+	SlugFactory = "Railgun Slug Factory"
+	SlugFactoryIcon = "Slug Factory"
+	SlugFactoryDesc = "A part that produces the hunks of tungsten fired by railguns."
+	
+	SlugStorage = "Railgun Slug Storage"
+	SlugStorageIcon  = "Slug Storage"
+	SlugStorageDesc = "A part that stores the hunks of tungsten fired by railguns."
+
+	LAWS = "LAWS"
+	LAWSIcon = "LAWS"
+	LAWSDesc = "Basically, laser point defense.  (based off of real US navy anti-missile weapon)."
+
+	SolarCell = "Solar Cell"
+	SolarCellIcon = "Solar Cell"
+	SolarCellDesc = "A solar panel that has the same power output as a normal reactor."
+
+	ImpulseMine = "Impulse Mine"
+	ImpulseMineIcon = &ImpulseMine
+	ImpulseMineDesc = "Similar to the warhead, but does little damage in exchange for extreme pushing."
+
+	RailTurretFS24 = "Railgun Turret"
+	RailTurretFS24Icon = &RailTurretFS24
+	RailTurretFS24Desc = "A railgun in a roof turret!"
+
+	CorundumCarbide = "Boron Nitride Armor"
+	CorundumCarbideIcon = "Boron Nitride"
+	CorundumCarbideDesc = "A type of armor that is insanely hard, hard enough to stop a railgun slug.  But, the tradeoff is that the armor is extremely brittle, so the second railgun slug will go right through."
+	
+	CorundumCarbide2 = "Boron Nitride Armor 1x2"
+	CorundumCarbide2Icon = "Boron Nitride"
+	CorundumCarbide2Desc = &CorundumCarbideDesc
+
+	ImpactMine = "Impact Mine"
+	ImpactMineIcon = &ImpactMine
+	ImpactMineDesc = "A warhead rigged to explode when it hits an enemy ship."
+
+	ArtificialMass = "Artificial Mass Block"
+	ArtificialMassIcon = "Artificial Mass"
+	ArtificialMassDesc = "A part that weighs 10,000 tonnes! Good for weighing down cannons that use warheads to accelerate impact mines."
+
+	DamageControl = "Damage Control Center"
+	DamageControlIcon = "Damage Control"
+	DamageControlDesc = "A part that secretes a healing aura when powered!(repairs existing ship parts, does not build new ones)"
+
+	WirelessCharger = "Wireless Charging Port"
+	WirelessChargerIcon = "Wireless Charger"
+	WirelessChargerDesc = "A part that secretes pure energy when powered!"
+
+	Nanosteel = "Nanosteel Armor"
+	NanosteelIcon = "Nanosteel Armor"
+	NanosteelDesc = "A highly advanced and expensive type of armor that uses several carbon nanotube composite materials plus energy-absorbing gel to provide superior protection against all forms of offensive weaponry.  Slowly regenerates itself without any outside input.  Buffs nearby subsystems by 15%. Price: $1000"
+
+	EMPCannonLarge = "Large EMP Cannon"
+	EMPCannonLargeIcon = "EMP Cannon"
+	EMPCannonLargeDesc = "A weapon that generates an electromagnetic pulse that disables enemy shields and electronics."
+}
+EditorGroups
+{
+	CWP = "CWP Parts"
+}

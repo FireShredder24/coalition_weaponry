@@ -1,0 +1,10 @@
+NameKey = "EditorGroups/CWP"
+Icon
+{
+	Texture
+	{
+		File = &<../CoalitionLogo.png>
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}

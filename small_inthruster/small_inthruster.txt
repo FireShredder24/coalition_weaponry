@@ -1,0 +1,398 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/SmallIntThruster"
+	IconNameKey = "Parts/SmallIntThrusterIcon"
+	IDString = FireShredder24.small_int_thruster
+	OtherIDs = ["small_int_thruster"]
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/SmallIntThrusterDesc"
+	Cost = 600
+	TypeCategories = [thruster]
+	Size = [1, 1]
+	PhysicalRect = [0, 0, 1, 1]
+	SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	MaxHealth = 1000
+	InitialPenetrationResistance = 1
+	ThrusterForce = 200
+	FuelUsage = 100
+	AllowedDoorLocations
+	[
+		[0, 1]
+		[0, -1]
+		[1, 0]
+		[-1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [16, 16]
+	}
+	Components
+	{
+		
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [1, 2]
+			Offset = [0, 0.5]
+		Type=BlueprintSprite;}
+		PowerUIStats
+		{
+			Min = .01666
+			Ideal = .0333
+			Type = UIStats
+			Stat = Power
+		}
+		CrewUIStats
+		{
+			Min = .0625
+			Ideal = .125
+			Type = UIStats
+			Stat = Crew
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				PowerToggle
+				BatteryStorage
+			]
+			Mode = All
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			ToggledOnChoices = [1]
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 1000
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = &/PRIORITIES/Thruster_Supply/Low
+			HighConsumeJobPriority = &/PRIORITIES/Thruster_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/Thruster_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, .5]
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads on1.png"
+							"doodads on2.png"
+							"doodads on3.png"
+							"doodads on4.png"
+							"doodads on5.png"
+							"doodads on6.png"
+							"doodads on7.png"
+							"doodads on8.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, .5]
+				DamageLevels
+				[
+					{
+						File = "doodads off.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, .5]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, .5]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_on.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_on_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_on_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows_off.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_off_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_windows_off_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [.5, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			HasZeroAmmoSprite = true
+			AmmoLevels
+			[
+				{
+					File = "batteries 0.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries 1.png"
+					Size = [1, 2]
+				}
+			]
+		}
+
+		MainThruster
+		{
+			Type = Thruster
+			OperationalToggle = IsOperational,
+			Location = [0.5, 1.5]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = &MaxActivation
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		LateralThruster
+		{
+			Type = Thruster
+			OperationalToggle = IsOperational,
+			ChainedTo = MainThruster
+			Rotation = 90d// Relative to main thruster.
+			Force = &../../ThrusterForce
+			MinActivation = -.5
+			MaxActivation = .5
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			FactorMediaEffectsIntensityWith = MainThruster
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Volume = .075
+					Speed = 2
+					MaxConcurrentVolume = .15
+				}
+			]
+		}
+
+		BurstTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = MainThruster
+			MinAmount = .5
+		}
+
+		BurstEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = MainThruster
+			Trigger = BurstTrigger
+			FactorMediaEffectsIntensityWith = MainThruster
+			AnchorMediaEffects = true
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					Volume = .125
+					Speed = 2
+					MaxConcurrentVolume = .25
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational,
+			Location = [.5, .5]
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, .5]
+		}
+
+		ThrusterHum
+		{
+			Type = ContinuousEffects
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterHum
+				{
+					Volume = .05
+					Speed = 1.5
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+	}
+}

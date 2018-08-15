@@ -1,0 +1,259 @@
+PowerOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "power_on.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]
+
+PowerOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "power_off.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]
+
+MachinesOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "machines_on.wav"
+		Volume = 1
+		SpeedVariation = .15
+	}
+]
+
+MachinesOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "machines_off.wav"
+		Volume = 1
+		SpeedVariation = .15
+	}
+]
+
+AmmoDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "ammo_deliver.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+AmmoLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "ammo_load.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+MissileLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "missile_load.wav"
+		Volume = .4
+		Speed = .5
+		SpeedVariation = .05
+	}
+]
+
+PowerDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "power_deliver.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+SmallPartDestroyed
+[
+	&<./Data/common_effects/particles/explosions/small_part_explode.txt>
+	&<./Data/common_effects/particles/explosions/small_part_explode_flash.txt>
+	&<./Data/common_effects/particles/explosions/small_part_explode_debris.txt>
+	&<./Data/common_effects/particles/explosions/small_part_explode_smoke.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "small_part_destroyed.wav"
+		Volume = .5
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+SmallPartDestroyedDry
+[
+	&<./Data/common_effects/particles/explosions/small_part_explode_dry.txt>
+	&<./Data/common_effects/particles/explosions/small_part_explode_debris.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "small_part_destroyed.wav"
+		Volume = .5
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+MedPartDestroyed
+[
+	&<./Data/common_effects/particles/explosions/med_part_explode.txt>
+	&<./Data/common_effects/particles/explosions/med_part_explode_flash.txt>
+	&<./Data/common_effects/particles/explosions/med_part_explode_debris.txt>
+	&<./Data/common_effects/particles/explosions/med_part_explode_smoke.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "med_part_destroyed.wav"
+		Volume = .75
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+MedPartDestroyedDry
+[
+	&<./Data/common_effects/particles/explosions/med_part_explode_dry.txt>
+	&<./Data/common_effects/particles/explosions/med_part_explode_debris.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "med_part_destroyed.wav"
+		Volume = .75
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+BigPartDestroyed
+[
+	&<./Data/common_effects/particles/explosions/big_part_explode.txt>
+	&<./Data/common_effects/particles/explosions/big_part_explode_flash.txt>
+	&<./Data/common_effects/particles/explosions/big_part_explode_debris.txt>
+	&<./Data/common_effects/particles/explosions/big_part_explode_smoke.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "big_part_destroyed.wav"
+		Volume = 1
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .15
+		Duration = 1
+	}
+]
+
+ReactorDestroyed
+[
+	&<./Data/ships/terran/reactor_small/particles/reactor_explode.txt>
+	&<./Data/ships/terran/reactor_small/particles/reactor_explode_flash.txt>
+	&<./Data/ships/terran/reactor_small/particles/reactor_shockwave.txt>
+	&<./Data/common_effects/particles/explosions/med_part_explode_debris.txt>
+	&<./Data/common_effects/particles/explosions/big_part_explode_smoke.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "reactor_destroyed.wav"
+		Volume = 1
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .25
+		Duration = 2
+	}
+]
+
+StructureDestroyed
+[
+	&<./Data/common_effects/particles/explosions/struct_explode.txt>
+	&<./Data/common_effects/particles/explosions/struct_explode_debris.txt>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "small_part_destroyed.wav"
+		Volume = .3
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .03
+		Duration = .3
+	}
+]
+
+Fire
+[
+	&<./Data/fire/particles/fire_smoke.txt>
+	&<./Data/fire/particles/fire_sparks.txt>
+
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "Fire/fire.wav"
+		Volume = .5
+		MaxConcurrentVolume = &Volume
+		IgnoreIntensityForVolume = true
+		IntensityRampUpTime = .2
+		IntensityRampDownTime = .2
+		MaxConcurrent = 1
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+FireExtinguisher
+[
+	&<./Data/fire/particles/fire_extinguisher.txt>
+
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "Fire/fire_extinguisher.wav"
+		Volume = .25
+		MaxConcurrentVolume = &Volume
+		IntensityRampUpTime = .05
+		IntensityRampDownTime = .05
+		MaxConcurrent = 1
+	}
+]

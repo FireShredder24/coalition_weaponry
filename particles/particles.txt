@@ -1,0 +1,2 @@
+//Weapon Glows
+SLBmk2ShotGlow = "blue_laser_shot_glow.txt"

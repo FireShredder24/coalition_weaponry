@@ -1,0 +1,489 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/RailTurretFS24"
+	IconNameKey = "Parts/RailTurretFS24Icon"
+	IDString = FireShredder24.fs24_railgun_turret
+	OtherIDs = ["fs24_railgun_turret"]
+	EditorGroup = "CWP"
+	DescriptionKey = "Parts/RailTurretFS24Desc"
+	Cost = 100000
+	AIValue = 10
+	TypeCategories = [weapon, weapon_using_ammo]
+	Size = [3, 3]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "cannons"
+	MaxHealth = 30000
+	InitialPenetrationResistance = 3
+	RequiresCategories = [sensors]
+	AllowedDoorLocations
+	[
+		[1, -1]
+		[-1, 1]
+		[3, 1]
+		[1, 3]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [42.66, 64]
+	}
+	Components
+	{
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [3, 3]
+		Type=BlueprintSprite;}
+		CrewUIStats
+		{
+			Min = 3
+			Ideal = 5
+			Type = UIStats
+			Stat = Crew
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				PowerToggle
+				PowerStorage
+				PartCrew
+			]
+			Mode = All
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			ToggledOnChoices = [1]
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [1]
+		}
+
+		LoadedAmmo
+		{
+			Type = AmmoStorage
+			AmmoType = slug
+			MaxAmmo = 1
+			DelayBeforeReadyToUse = .25
+			AnticipateMoreAmmoFrom = ["AmmoStorage"]
+		}
+
+		AmmoStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = slug
+			MaxAmmo = 4
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = 50
+			HighConsumeJobPriority = &/PRIORITIES/Weapon_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/Weapon_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			AdditionalStorageForJobPriority = [LoadedAmmo]
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+		}
+		PowerStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 4000
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = 50
+			HighConsumeJobPriority = 100
+			EmptyConsumeJobPriority = 101
+			JobUnassignThreshold = 1
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PowerDrain
+		{
+			Type = AmmoConverter
+			OperationalToggle = IsOperational
+			FromStorage = PowerStorage
+			FromQuantity = 100
+			Interval = 0.2
+		}
+		AmmoLoader
+		{
+			Type = AmmoConverter
+			OnlyWhenOperational = false
+			FromStorage = AmmoStorage
+			ToStorage = LoadedAmmo
+			FromQuantity = 1
+			ToQuantity = 1
+
+			}
+
+		AmmoLoader_ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AmmoLoader
+			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [1.5, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			OperationalToggle = IsOperational,
+			Location = [1.5, 1.5]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			FireInterval = 7.5
+			FiringArc = 360d
+			RotateSpeed = 20d
+			FireThresholdAngle = 0d
+			TargetSearchTriesPerFrame = 1
+			AIFirepowerRating = 30000
+			FireModeToggle = FireModeToggle
+			AllowFireWithBlockedLOS = true
+
+			OldEmitter
+			{
+				Type = Bullet
+				Bullet = &<../railgun/railgun_slug.txt>
+			}
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		Emitter = TurretEmitter
+		}
+		TurretEmitter: Turret/OldEmitter
+		{
+			Type = BulletEmitter
+			Location
+			[
+				2
+				0
+			]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			AmmoStorage = LoadedAmmo
+			AmmoUsed = 1
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = TurretEmitter
+			Location = [2, 0]
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../railgun/railgun_fire.mp3"
+					Volume = 100
+					SpeedVariation = .25
+				}
+
+				:/BASE_SHAKE
+				{
+					ShakeAmount = 0.75
+					Duration = 1
+				}
+			]
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [.8, 1.85]
+			Rotation = 180d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [2.3, 1.85]
+			Rotation = 135d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			Priorities = { First=&../FirstCrewJobPriority; Additional=&../AdditionalCrewJobPriority; Full=&../FullCrewJobPriority }
+			FirstCrewJobPriority = &/PRIORITIES/Weapon_Crew/First
+			AdditionalCrewJobPriority = &/PRIORITIES/Weapon_Crew/Additional
+			FullCrewJobPriority = &/PRIORITIES/Weapon_Crew/Full
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			CrewDestinations
+			[
+				[.8, 1.35]
+				[2.3, 1.35]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
+		}
+		ConsoleGraphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [1.5, 1.5]
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"console on1.png"
+							"console on2.png"
+							"console on3.png"
+							"console on4.png"
+							"console on5.png"
+							"console on6.png"
+							"console on7.png"
+							"console on8.png"
+						]
+						Size = [3, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "console off.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
+		BarrelSprite
+		{
+			Type = Sprite
+			ChainedTo = Turret
+			Location = [1.5, 0]
+			Rotation = 90d
+			Layer = "roof_weapons"
+			ResetAnimationTrigger = TurretEmitter
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"barrel1.png"
+				]
+				Size = [3, 6]
+				AnimationInterval = 0.0625
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+
+		AmmoSprites
+		{
+			Type = AmmoSprites
+			Location = [1.5, 2]
+			AmmoStorage = AmmoStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "../ammo_storage/slug1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "../ammo_storage/slug2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "../ammo_storage/slug3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "../ammo_storage/slug4.png"
+					Size = [2, 2]
+				}
+			]
+		}
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [0.8, 0.8]
+			AmmoStorage = PowerStorage
+			Layer = "doodads_low"
+			HasZeroAmmoSprite = true
+			AmmoLevels
+			[
+				{
+					File = "battery_store0.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery_store1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery_store2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery_store3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "battery_store4.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational,
+			Location = [1, 1]
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				// No slugs.
+				{
+					Toggle = AmmoStorage
+					AtlasSprite
+					{
+						File = "../railgun/slug_indicator.png"
+						Size = [1.5, 1.5]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+	}
+}

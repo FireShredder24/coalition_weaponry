@@ -1,0 +1,374 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/SlugFactory"
+	IconNameKey = "Parts/SlugFactoryIcon"
+	IDString = FireShredder24.slug_factory
+	OtherIDs = ["slug_factory"]
+	EditorGroup = "Munitions"
+	DescriptionKey = "Parts/SlugFactoryDesc"
+	Cost = 5000
+	AIValue = 20
+	Size = [2, 2]
+	SelectionPriority = 1
+	MaxHealth = 4000
+	InitialPenetrationResistance = 1
+	TypeCategories = [ammo]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components
+	{
+		
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [2, 2]
+		Type=BlueprintSprite;}
+		PowerUIStats
+		{
+			Min = 2
+			Ideal = 4
+			Type = UIStats
+			Stat = Power
+		}
+		CrewUIStats
+		{
+			Min = .25
+			Ideal = .5
+			Type = UIStats
+			Stat = Crew
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				PowerToggle
+				BatteryStorage
+			]
+			Mode = All
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			ToggledOnChoices = [1]
+		}
+
+		AmmoStorage
+		{
+			Type = AmmoStorage
+			AmmoType = slug
+			MaxAmmo = 4
+			SuppliesAmmo = true
+			AssumeAlwaysHasAmmo = true
+			WaitPerDistToNextClosest = .05
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 2000
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = &/PRIORITIES/Factory_Supply/Low
+			HighConsumeJobPriority = &/PRIORITIES/Factory_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/Factory_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 1000
+			AmmoDesireToggle = PowerToggle
+
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		AmmoConverter
+		{
+			Type = AmmoConverter
+			Location = [1, 1]
+			FromStorage = BatteryStorage
+			ToStorage = AmmoStorage
+			FromQuantity = 500
+			ToQuantity = 1
+			Interval = 1
+
+			}
+
+		AmmoConverter_ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AmmoConverter
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior {
+					Sound = "bullet_create.wav"
+					Volume = .075
+					SpeedVariation = .1
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads on1.png"
+							"doodads on2.png"
+							"doodads on3.png"
+							"doodads on4.png"
+							"doodads on5.png"
+							"doodads on6.png"
+							"doodads on7.png"
+							"doodads on8.png"
+							"doodads on9.png"
+							"doodads on10.png"
+							"doodads on11.png"
+							"doodads on12.png"
+							"doodads on13.png"
+							"doodads on14.png"
+							"doodads on15.png"
+							"doodads on16.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows = &OperationalRoofWindows
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		AmmoSprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = AmmoStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "bullets1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "bullets2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "bullets3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "bullets4.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational,
+			Location = [1, 1]
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+
+			FactorHitEffectsWith = AmmoStorage
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsOperationalPerTile = 2000
+					RadiusVsOperational = 4
+					DamageVsStructurePerTile = 1000
+					RadiusVsStructure = 3
+					Delay = .05
+					AllowFriendlyDamage = true
+				}
+				{
+					Type = AreaFires
+					FireChancePerTile = .25
+					FireRadius = 4
+					FireFalloff = 0
+					Delay = .05
+					AllowFriendlyFires = true
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+	}
+}

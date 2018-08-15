@@ -1,0 +1,139 @@
+ID = FireShredder24.sniper_laser_shot
+OtherIDs = ["sniper_laser_shot"]
+Range = 150
+IdealRange = 120
+Speed = 100
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.01
+		Density = 0.1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture = "laser.png"
+				Size = [1.75, 1.75]
+			}
+			FrameCount = 8
+			FrameSize = [128, 128]
+			FramesPerRow = 2
+			FramesPerSecond = 60
+		}
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		PhysicsComponent = Physics
+		Penetration = 3.0
+		PenetrationSpeed = 30
+
+		HitShield
+		{
+			HitEffects
+			[
+				{
+					Type = ShieldDamage
+					Damage = 250
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = PartDamage
+					Damage = 800
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit.txt>
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_flash.txt>
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "small_laser_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = PartDamage
+					Damage = 200
+				}
+				{
+					Type = Impulse;
+					Impulse = 2;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "small_laser_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+}

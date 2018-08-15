@@ -1,0 +1,139 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/ImpactMine"
+	IconNameKey = "Parts/ImpactMineIcon"
+	IDString = impact_mine
+	EditorGroup = "Weapons"
+	DescriptionKey = "Parts/ImpactMineDesc"
+	Cost = 5000
+	Size = [1, 1]
+	Density = 1
+	MaxHealth = 8000
+	HealthType = Structural
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	PenetrationResistance = 0
+	CrewSpeedFactor = 1
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsRotateable = false
+	IsWalled = true
+	GeneratorRequiresDoor = false
+	NoAutoDoors = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	BlueprintSprites
+	[
+		{
+			File = "blueprints_arrow.png"
+			Size = [1, 1]
+		}
+	]
+	Components
+	{
+		DetonateTrigger
+		{
+			Type = UITrigger
+			TriggerID = "detonate"
+		}
+
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = PartDamage
+					Damage = 999999
+					AllowFriendlyDamage = true
+				}
+			]
+		}
+		ImpactFuse
+		{
+			Type = FixedWeapon
+			Location = [0.5, 0.5]
+			Rotation = -90d
+			SpawnLoc = [0.5, 0.5]
+			FiringArc = 90d
+			FireInterval = 0.1
+			AIFirepowerRating = 5000
+			CanBeGivenExplicitTarget = false
+			AllowFireWithBlockedLOS = true
+
+			Emitter
+			{
+				Type = Bullet
+				Bullet = &<self_destruct.txt>
+			}
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "structure.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &<./Data/ships/terran/reactor_small/reactor_small.txt>/Part/Components/DestroyedEffects/MediaEffects
+			Location = [1, 1]
+
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsOperationalPerTile = 15000
+					RadiusVsOperational = 15
+					DamageVsStructurePerTile = 15000
+					RadiusVsStructure = 15
+					AllowFriendlyDamage = true
+				}
+				{
+					Type = AreaFires
+					FireChancePerTile = .5
+					FireRadius = 6
+					FireFalloff = 0
+					AllowFriendlyFires = true
+				}
+				{
+					Type = AreaImpulse
+					ImpulsePerTile = 10
+					ImpulseRadius = 10
+				}
+			]
+		}
+	}
+}

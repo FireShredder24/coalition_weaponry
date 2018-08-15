@@ -1,0 +1,142 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/BunkRoom"
+	IconNameKey = "Parts/BunkRoomIcon"
+	IDString = FireShredder24.bunkRoom
+	OtherIDs = ["bunkRoom"]
+	EditorGroup = "Crew"
+	DescriptionKey = "Parts/BunkRoomDesc"
+	Cost = 500
+	Size = [1, 2]
+	SelectionTypeID = "quarters"
+	MaxHealth = 2000
+	InitialPenetrationResistance = 1
+	TypeCategories = [crew]
+	CrewCapacity = 4
+	CrewSpawnLocations
+	[
+		[.5, .3]
+		[.5, .29]
+		[.5, 1.5]
+		[.5, 1.49]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components
+	{
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [1, 2]
+		Type=BlueprintSprite;}
+		CrewUIStats
+		{
+			Provided = 4
+			Type = UIStats
+			Stat = Crew
+		}
+		CrewIdler
+		{
+			Type = CrewIdler
+			MaxCrew = &../../CrewCapacity
+			Buffer = .25
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 1]
+		}
+	}
+}

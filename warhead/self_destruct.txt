@@ -1,0 +1,55 @@
+ID = self_destruct
+Range = 1
+IdealRange = 1
+Speed = 1
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.01
+		Density = 0.1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		PhysicsComponent = Physics
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsOperationalPerTile = 15000
+					RadiusVsOperational = 15
+					DamageVsStructurePerTile = 15000
+					RadiusVsStructure = 15
+					AllowFriendlyDamage = true
+				}
+				{
+					Type = AreaFires
+					FireChancePerTile = .5
+					FireRadius = 6
+					FireFalloff = 0
+					AllowFriendlyFires = true
+				}
+				{
+					Type = AreaImpulse
+					ImpulsePerTile = 10
+					ImpulseRadius = 10
+				}
+			]
+		}
+		HitStructural = &HitOperational
+	}
+}

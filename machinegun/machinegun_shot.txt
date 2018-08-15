@@ -1,0 +1,94 @@
+ID = FireShredder24.machinegun_shot
+OtherIDs = ["machinegun_shot"]
+Range = 100
+IdealRange = 80
+Speed = 160
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.4
+		Density = 0.1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = Lower
+		Sprite
+		{
+			Texture = "point_defense_shot.png"
+			Size = [8, .5]
+		}
+	}
+
+	AntiBullet
+	{
+		Type = AntiBullet
+		PhysicsComponent = Physics
+
+		HitBullet
+		{
+			HitEffects
+			[
+				{
+					Type = BulletDamage
+					Damage = 1000
+				}
+			]
+			
+			MediaEffects
+			[
+				// TODO
+			]
+		}
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		PhysicsComponent = Physics
+
+		HitShield
+		{
+			HitEffects
+			[
+				{
+				Type = ShieldDamage
+				Damage = 500
+				}
+				{
+				Type = Impulse
+				Impulse = 0.5
+				
+				}
+			
+			]
+		
+		}
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+				Type = PartDamage
+				Damage = 75
+				}
+				{
+				Type = Impulse
+				Impulse = 0.25
+				}
+			]
+			MediaEffects = &~/Components/AntiBullet/HitBullet/MediaEffects
+		}
+		HitStructural = &HitOperational
+	}
+}

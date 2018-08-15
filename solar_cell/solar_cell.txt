@@ -1,0 +1,170 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/SolarCell"
+	IconNameKey = "Parts/SolarCellIcon"
+	IDString = FireShredder24.solar_cell
+	OtherIDs = ["solar_cell"]
+	EditorGroup = "Power"
+	DescriptionKey = "Parts/SolarCellDesc"
+	Cost = 5000
+	Size = [1, 2]
+	SelectionTypeID = "power"
+	MaxHealth = 4000
+	AIValue = 1000
+	InitialPenetrationResistance = 1
+	TypeCategories = [power]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "roof.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components
+	{
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [1, 2]
+		Type=BlueprintSprite;}
+		PowerUIStats
+		{
+			Provided = 8
+			Type = UIStats
+			Stat = Power
+		}
+		BatteryStorage
+		{
+			Type = AmmoStorage
+			AmmoType = battery
+			MaxAmmo = 8000
+			StartingAmmo = &MaxAmmo
+			SuppliesAmmo = true
+			MaxIndicatorAmmo = 1000
+			AssumeAlwaysHasAmmo = true
+			WaitPerDistToNextClosest = .1
+		}
+		BatteryProducer
+		{
+			Type = AmmoConverter
+			ToStorage = BatteryStorage
+			ToQuantity = 1000
+			Interval = 1.33
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "../bunkRoom/walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "../bunkRoom/walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "../bunkRoom/walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 1]
+		}
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [0.5, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			HasZeroAmmoSprite = false
+			AmmoLevels
+			[
+				{
+					File = "battery1.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery2.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery3.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery4.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery5.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery6.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery7.png"
+					Size = [1, 2]
+				}
+				{
+					File = "battery8.png"
+					Size = [1, 2]
+				}
+			]
+		}
+	}
+}

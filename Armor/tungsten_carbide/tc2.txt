@@ -1,0 +1,111 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/CorundumCarbide2"
+	IconNameKey = "Parts/CorundumCarbide2Icon"
+	IDString = FireShredder24.c_carbide2
+	OtherIDs = ["c_carbide2"]
+	EditorGroup = "Defenses"
+	EditorReplacementPartID = c_carbide
+	DescriptionKey = "Parts/CorundumCarbide2Desc"
+	Cost = 2000
+	Size = [2, 1]
+	SelectionTypeID = "armor"
+	MaxHealth = 20000
+	AreaDamageBlockFactor = .01
+	Flammable = false
+	InitialPenetrationResistance = 10000000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 12
+	IsRotateable = true
+	IsWalled = true
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "floor2.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components
+	{
+		BlueprintSprite0
+		{
+			File = "blueprintsC2.png"
+			Size = [2, 1]
+		Type=BlueprintSprite;}
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floorC2.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "floorC2.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "floorC2.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floorC2_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [1, .5]
+		}
+	}
+}

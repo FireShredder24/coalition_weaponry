@@ -1,0 +1,110 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/Aerogel2"
+	IconNameKey = "Parts/Aerogel2Icon"
+	IDString = FireShredder24.aerogel2
+	OtherIDs = ["aerogel2"]
+	EditorGroup = "Defenses"
+	EditorReplacementPartID = aerogel
+	DescriptionKey = "Parts/Aerogel2Desc"
+	Cost = 500
+	Size = [2, 1]
+	SelectionTypeID = "armor"
+	MaxHealth = 7000
+	AreaDamageBlockFactor = .25
+	Flammable = false
+	InitialPenetrationResistance = 3
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 1
+	IsRotateable = true
+	IsWalled = true
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components
+	{
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [2, 1]
+		Type=BlueprintSprite;}
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "armor.png"
+						Size = [2, 1]
+					}
+					{
+						File = "armor_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "armor_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "armor.png"
+						Size = [2, 1]
+					}
+					{
+						File = "armor_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "armor_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [1, .5]
+		}
+	}
+}

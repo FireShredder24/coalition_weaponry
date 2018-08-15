@@ -1,0 +1,279 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/WirelessCharger"
+	IconNameKey = "Parts/WirelessChargerIcon"
+	IDString = FireShredder24.wireless_charger
+	OtherIDs = ["wireless_charger"]
+	EditorGroup = "CWP"
+	DescriptionKey = "Parts/WirelessChargerDesc"
+	Cost = 20000
+	AIValue = 50
+	Size = [2, 2]
+	SelectionPriority = 0
+	MaxHealth = 4000
+	InitialPenetrationResistance = 1
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components
+	{
+		
+		
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [2, 2]
+		Type=BlueprintSprite;}
+		PowerUIStats
+		{
+			Min = .02
+			Ideal = .02
+			Type = UIStats
+			Stat = Power
+		}
+		CrewUIStats
+		{
+			Min = 0
+			Ideal = 1
+			Type = UIStats
+			Stat = Crew
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				BatteryStorage
+			]
+			Mode = All
+		}
+		BatteryStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = battery
+			MaxAmmo = 4000 // Batteries are counted in 1000s because of partial battery usage by weapons(you can't use fractions of a single unit of ammo)
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = &/PRIORITIES/ControlRoom_Supply/Low
+			HighConsumeJobPriority = &/PRIORITIES/ControlRoom_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/ControlRoom_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 500
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PowerDrain
+		{
+			Type = AmmoConverter
+			FromStorage = BatteryStorage
+			FromQuantity = 1000
+			Interval = 15// Drains 1 power every 15 seconds.
+		}
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "floors" // Look in terran.txt to see all the layer options.
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads on1.png"
+							"doodads on2.png"
+							"doodads on3.png"
+							"doodads on2.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads off.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+		// This turret component copied from JBox1's Drones ++ mod.
+		Turret
+		{
+			Type = TurretWeapon
+			OperationalToggle = IsOperational,
+			Location = [.5, .5] // Relative to upper-left corner of unrotated part.
+			Rotation = 0 // Relative to unrotated part. (unrotated direction is right)
+			FireInterval = 0.75
+			FiringArc = 0d
+			RotateSpeed = 0d
+			FireThresholdAngle = 360d
+			TargetSearchTriesPerFrame = 1
+			AIFirepowerRating = 600
+			AllowFireWithBlockedLOS = true
+			CanBeGivenExplicitTarget = false
+			autofire = true
+			
+			OldEmitter
+			{
+				Type = Bullet
+				Bullet = &<Heal.txt>
+			}
+		Emitter = TurretEmitter
+		}
+		TurretEmitter: Turret/OldEmitter
+		{
+			Type = BulletEmitter
+			Location
+			[
+				0
+				0
+			]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			FireDelay = .25
+		}
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "batteries 1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries 2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries 3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries 4.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational,
+			Location = [1, 1]
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,211 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/SlugStorage"
+	IconNameKey = "Parts/SlugStorageIcon"
+	IDString = FireShredder24.slug_storage
+	OtherIDs = ["slug_storage"]
+	EditorGroup = "Munitions"
+	DescriptionKey = "Parts/SlugStorageDesc"
+	Cost = 1500
+	AIValue = 10
+	Size = [2, 2]
+	MaxHealth = 4000
+	InitialPenetrationResistance = 1
+	TypeCategories = [ammo]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components
+	{
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [2, 2]
+		Type=BlueprintSprite;}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				AmmoStorage
+			]
+			Mode = All
+		}
+		AmmoStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = slug
+			MaxAmmo = 6
+			StartingAmmo = 0
+			SuppliesAmmo = true
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = &/PRIORITIES/Storage_Supply/Low
+			HighConsumeJobPriority = &/PRIORITIES/Storage_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/Storage_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational,
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofWindows
+			{
+				Layer = "roof_windows"
+				DamageLevels
+				[
+					{
+						File = "roof_windows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_windows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofWindows = &OperationalRoofWindows
+		}
+
+		AmmoSprites
+		{
+			Type = AmmoSprites
+			Location = [1, 1]
+			AmmoStorage = AmmoStorage
+			Layer = "doodads_low"
+			AmmoLevels
+			[
+				{
+					File = "slug1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "slug2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "slug3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "slug4.png"
+					Size = [2, 2]
+				}
+				{
+					File = "slug5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "slug6.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Out of ammo.
+				{
+					Toggle = AmmoStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoAmmo
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+	}
+}

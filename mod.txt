@@ -1,0 +1,83 @@
+ID = "FireShredder24.CWP"
+Name = "Coalition Weapons Pack"
+Version = 1.3
+CompatibleGameVersions = ["0.14.1"]
+ModifiesMultiplayer = true
+Author = "FireShredder24"
+Logo = "logo.png"
+Description = "This is a mod that adds different types of laser weaponry and armor to Cosmoteer.\n\n"\
+		"These include:\n\n"\
+		"-Sniper Lasers\n\n"\
+		"-Aerogel Armor\n\n"\
+		"-Plate Armor\n\n"
+		
+StringsFolder = "Strings"
+Actions
+[
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.txt>/Terran/Parts"
+		ManyToAdd 
+		[
+			&<sniper_laser/sniper_laser.txt>/Part
+			&<Armor/aerogel/aerogel.txt>/Part
+			&<Armor/aerogel_wedge/aerogel_wedge.txt>/Part
+			&<Armor/aerogel2/aerogel2.txt>/Part
+			&<Armor/aerogel2_wedge/aerogel2_wedge_L.txt>/Part
+			&<Armor/aerogel2_wedge/aerogel2_wedge_R.txt>/Part
+			&<Armor/plate/plate.txt>/Part
+			&<machinegun/machinegun.txt>/Part
+			&<Armor/plate2/plate2.txt>/Part
+			&<small_inthruster/small_inthruster.txt>/Part
+			&<warhead/warhead.txt>/Part
+			&<ciws/ciws.txt>/Part
+			&<bunkRoom/bunkRoom.txt>/Part
+			// &<railgun/railgun.txt>/Part
+			&<ammo_storage/ammo_storage.txt>/Part
+			&<slug_factory/slug_factory.txt>/Part
+			&<solar_cell/solar_cell.txt>/Part
+			&<warhead/impulse_mine.txt>/Part
+			&<blink_drive/ftl_drive.txt>/Part
+			&<railgun_turret/railgun_turret.txt>/Part
+			&<Armor/tungsten_carbide/tc.txt>/Part
+			&<Armor/tungsten_carbide/tc2.txt>/Part
+//			&<warhead/impact_mine.txt>/Part
+			&<artificial_mass/structure.txt>/Part
+			&<damage_control/cockpit.txt>/Part
+			&<wireless_charger/cockpit.txt>/Part
+			&<emp_cannon/5in.txt>/Part
+		]
+	}
+	{
+		Action = Add
+		AddTo = "<Ammo/ammo.txt>/Ammo"
+		ToAdd = &<Ammo/slug.txt>
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/cannon_med/particles/cannon_smoke_med.txt>"
+		Overrides
+		{
+		IsFancy = false
+		MinIntensity = 0.1
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/terran.txt>/Terran/RenderLayers"
+		ToAdd = &<particles/roof_weapons.txt>
+	}
+	{
+		Action = Add
+		AddTo = "<gui/game/designer/editor_groups.txt>"
+		Name = "CWP"
+		ToAdd
+		{
+			NameKey = "EditorGroups/CWP"
+			Icon
+			{
+				Texture = "CoalitionLogo.png"
+			}
+		}
+	}
+]

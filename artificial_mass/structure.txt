@@ -1,0 +1,136 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/ArtificialMass"
+	IconNameKey = "Parts/ArtificialMassIcon"
+	IDString = FireShredder24.mass_block
+	OtherIDs = ["mass_block"]
+	EditorGroup = "CWP"
+	DescriptionKey = "Parts/ArtificialMassDesc"
+	Cost = 1000
+	Size = [1, 1]
+	Density = 10000
+	MaxHealth = 10000
+	HealthType = Structural
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 0
+	CrewSpeedFactor = 0
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsRotateable = false
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	NoAutoDoors = true
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "structure.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components
+	{
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [1, 1]
+		Type=BlueprintSprite;}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "structure.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_0.png"
+							"doodads_1.png"
+							"doodads_2.png"
+							"doodads_3.png"
+							"doodads_4.png"
+							"doodads_5.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1734
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "structure.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "structure_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			RoofLights
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_0.png"
+							"doodads_1.png"
+							"doodads_2.png"
+							"doodads_3.png"
+							"doodads_4.png"
+							"doodads_5.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1734
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/StructureDestroyed
+			Location = [.5, .5]
+		}
+	}
+}

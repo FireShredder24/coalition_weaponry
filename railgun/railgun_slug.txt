@@ -1,0 +1,164 @@
+ID = FireShredder24.railgun_slug
+OtherIDs = ["railgun_slug"]
+Range = 2000
+IdealRange = 1500
+Speed = 300
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 0.1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = Lower
+		Sprite
+		{
+			Texture = "railgun_slug.png"
+			Size = [8, .5]
+		}
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		PhysicsComponent = Physics
+		Penetration = 1000000
+		PenetrationSpeed = 250
+		PenetratesShields = true
+		SourceShipCollisionDelay = 10.01
+
+		HitShield
+		{
+			HitEffects
+			[
+				{
+					Type = ShieldDamage
+					Damage = 10000
+				}
+				{
+					Type = Impulse;
+					Impulse = 20;
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsOperationalPerTile = 12000
+					RadiusVsOperational = 3
+					DamageVsStructurePerTile = 12000
+					RadiusVsStructure = 3
+				}
+				{
+					Type = Impulse;
+					Impulse = 200;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med.txt>
+				&<./Data/shots/bullet_med/particles/bullet_smoke_med.txt>
+				&<./Data/shots/bullet_med/particles/bullet_flash_med.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "med_bullet_hit.wav"
+					Volume = .5
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .5
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsStructurePerTile = 12000
+					RadiusVsStructure = 3
+					DamageVsOperationalPerTile = 12000
+					RadiusVsOperational = 3
+				}
+				{
+					Type = Impulse;
+					Impulse = 300;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_struct_med.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "med_bullet_hit_structure.wav"
+					Volume = .5
+					SpeedVariation = .25
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			HitEffects
+			[
+				{
+					Type = PartDamage
+					Damage = 1000
+				}
+				{
+					Type = PartFire
+					FireChance = .99
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med.txt>
+				&<./Data/shots/bullet_med/particles/bullet_flash_med.txt>
+			]
+		}
+		PenetratingStructural = &PenetratingOperational
+		FinishedPenetratingOperational
+		{
+			HitEffects
+			[
+				{
+					Type = PartAreaDamage
+					DamageVsOperationalPerTile = 10000
+					RadiusVsOperational = 4
+					DamageVsStructurePerTile = 10000
+					RadiusVsStructure = 3
+				}
+				{
+					Type = Impulse
+					Impulse = 500
+				}
+			]
+		}
+		FinishedPenetratingStructural = &FinishedPenetratingOperational
+	}
+}

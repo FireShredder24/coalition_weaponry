@@ -1,0 +1,9 @@
+ID = condensed_cell
+MaxCarried = 1
+MaxCarriedSprites = 1
+CarriedSprite
+{
+	File = "condensed_cell.png"
+	Size = [1, 1]
+}
+CarriedSpriteOffset = [0, .25]
