@@ -92,6 +92,14 @@ Parts
 	CorundumCarbide2Icon = "Boron Nitride"
 	CorundumCarbide2Desc = &CorundumCarbideDesc
 
+	TungstenCarbide = "Tungsten Carbide Armor"
+	TungstenCarbideIcon = "Tungsten Carbide"
+	TungstenCarbideDesc = "One of the hardest materials known to man, tungsten carbide makes great armor."
+
+	TungstenCarbide2 = &TungstenCarbide
+	TungstenCarbide2Icon = &TungstenCarbideIcon
+	TungstenCarbide2Desc = &TungstenCarbideDesc
+
 	ImpactMine = "Impact Mine"
 	ImpactMineIcon = &ImpactMine
 	ImpactMineDesc = "A warhead rigged to explode when it hits an enemy ship."

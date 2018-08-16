@@ -1,11 +1,11 @@
 ID = "FireShredder24.CWP"
 Name = "Coalition Weapons Pack"
-Version = 1.3
+Version = 1.4
 CompatibleGameVersions = ["0.14.3"]
 ModifiesMultiplayer = true
 Author = "FireShredder24"
 Logo = "logo.png"
-Description = "This is a mod that adds different types of laser weaponry and armor to Cosmoteer."
+Description = "This mod is loosely based on US Navy and UNSC technology and weapons, and was also designed to defeat the Star Wars: A Cosmos Divided mod in battle. The World War II Mod is an add-on to this mod, and it adds more cannons and projectile weaponry."
 		
 StringsFolder = "Strings"
 Actions
@@ -35,8 +35,10 @@ Actions
 			&<warhead/impulse_mine.txt>/Part
 			&<blink_drive/ftl_drive.txt>/Part
 			&<railgun_turret/railgun_turret.txt>/Part
-			&<Armor/tungsten_carbide/tc.txt>/Part
-			&<Armor/tungsten_carbide/tc2.txt>/Part
+			&<Armor/advanced/tc.txt>/Part
+			&<Armor/advanced/tc2.txt>/Part
+			&<Armor/advanced/bn.txt>/Part
+			&<Armor/advanced/bn2.txt>/Part
 //			&<warhead/impact_mine.txt>/Part
 			&<artificial_mass/structure.txt>/Part
 			&<damage_control/cockpit.txt>/Part
