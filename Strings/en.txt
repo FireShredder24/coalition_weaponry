@@ -62,11 +62,11 @@ Parts
 
 	SlugFactory = "MAC Round Factory"
 	SlugFactoryIcon = "MAC Round Factory"
-	SlugFactoryDesc = "A part that produces the hunks of tungsten fired by MACs."
+	SlugFactoryDesc = "A part that produces the ferric tungsten slugs fired by MACs.  Uses 4 cannon rounds and 4 batteries to create each slug."
 	
 	SlugStorage = "MAC Round Storage"
 	SlugStorageIcon  = "MAC Storage"
-	SlugStorageDesc = "A part that stores the hunks of tungsten fired by MACs."
+	SlugStorageDesc = "A part that stores the ferric tungsten slugs fired by MACs."
 
 	LAWS = "LAWS"
 	LAWSIcon = "LAWS"
@@ -127,6 +127,10 @@ Parts
 	FireControl = "Fire Control"
 	FireControlIcon = "Fire Control Station"
 	FireControlDesc = "A crewed station that helps direct fire from more advanced weapons systems.  Boosts sensor radius.  Does not provide control of the ship."
+
+	Hallway = "Hallway"
+	HallwayIcon = "Hallway"
+	HallwayDesc = "A variant of the corridor that interacts with crew's boots to help them move faster. x2 crew walk speed!"
 }
 EditorGroups
 {

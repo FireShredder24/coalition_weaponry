@@ -13,13 +13,6 @@ Part : /BASE_PART
 	MaxHealth = 4000
 	InitialPenetrationResistance = 1
 	TypeCategories = [ammo]
-	AllowedDoorLocations
-	[
-		[-1, 1]
-		[2, 1]
-		[0, 2]
-		[1, 2]
-	]
 	EditorIcon
 	{
 		Texture
@@ -70,11 +63,11 @@ Part : /BASE_PART
 			ToggledOnChoices = [1]
 		}
 
-		AmmoStorage
+		SlugStorage
 		{
 			Type = AmmoStorage
 			AmmoType = slug
-			MaxAmmo = 4
+			MaxAmmo = 1
 			SuppliesAmmo = true
 			AssumeAlwaysHasAmmo = true
 			WaitPerDistToNextClosest = .05
@@ -84,7 +77,7 @@ Part : /BASE_PART
 		{
 			Type = AmmoConsumer
 			AmmoType = battery
-			MaxAmmo = 2000
+			MaxAmmo = 4000
 			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
 			LowConsumeJobPriority = &/PRIORITIES/Factory_Supply/Low
 			HighConsumeJobPriority = &/PRIORITIES/Factory_Supply/High
@@ -95,14 +88,37 @@ Part : /BASE_PART
 
 			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		AmmoStorage
+		{
+			Type = AmmoConsumer
+			AmmoType = bullet
+			MaxAmmo = 4
+			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+			LowConsumeJobPriority = &/PRIORITIES/Factory_Supply/Low
+			HighConsumeJobPriority = &/PRIORITIES/Factory_Supply/High
+			EmptyConsumeJobPriority = &/PRIORITIES/Factory_Supply/Empty
+			JobUnassignThreshold = 1000000// Effectively unassignable.
+			ResupplyThreshold = 1
+			AmmoDesireToggle = PowerToggle
 
+			ReceiveAmmoMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+		}
 		AmmoConverter
 		{
 			Type = AmmoConverter
 			Location = [1, 1]
-			FromStorage = BatteryStorage
-			ToStorage = AmmoStorage
-			FromQuantity = 500
+			From
+			[
+				{
+					Storage = BatteryStorage
+					Quantity = 4000
+				}
+				{
+					Storage = AmmoStorage
+					Quantity = 4
+				}
+			]
+			ToStorage = SlugStorage
 			ToQuantity = 1
 			Interval = 1
 
@@ -263,7 +279,7 @@ Part : /BASE_PART
 			Type = AmmoSprites
 			Location = [1, 1]
 			AmmoStorage = BatteryStorage
-			Layer = "doodads_low"
+			Layer = "doodads_high"
 			AmmoLevels
 			[
 				{
@@ -272,6 +288,14 @@ Part : /BASE_PART
 				}
 				{
 					File = "batteries2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries4.png"
 					Size = [2, 2]
 				}
 			]
