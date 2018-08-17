@@ -28,7 +28,7 @@ Part : /BASE_PART
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [42.66, 64]
+		Size = [42.66, 42.66]
 	}
 	Components
 	{

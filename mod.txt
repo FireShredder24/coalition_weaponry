@@ -45,6 +45,7 @@ Actions
 			&<wireless_charger/cockpit.txt>/Part
 			&<emp_cannon/emp.txt>/Part
 			&<fire_control/fire_control.txt>/Part
+			// &<hallway/hallway.txt>/Part
 		]
 	}
 	{
