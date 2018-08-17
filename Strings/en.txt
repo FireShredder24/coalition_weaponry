@@ -82,7 +82,7 @@ Parts
 
 	RailTurretFS24 = "MAC Turret"
 	RailTurretFS24Icon = &RailTurretFS24
-	RailTurretFS24Desc = "A weapon that uses magnets to accelerate tungsten slugs to incredible velocities, tearing through everything in its path."
+	RailTurretFS24Desc = "A weapon that uses magnets to accelerate ferric tungsten slugs to incredible velocities, tearing through everything in its path."
 
 	CorundumCarbide = "Boron Nitride Armor"
 	CorundumCarbideIcon = "Boron Nitride"
