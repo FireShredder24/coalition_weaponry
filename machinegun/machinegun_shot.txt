@@ -1,8 +1,8 @@
 ID = FireShredder24.machinegun_shot
 OtherIDs = ["machinegun_shot"]
-Range = 150
-IdealRange = [100, 120]
-Speed = 120
+Range = 100
+IdealRange = 80
+Speed = 160
 
 Components
 {
@@ -26,7 +26,7 @@ Components
 		Sprite
 		{
 			Texture = "point_defense_shot.png"
-			Size = [2, .125]
+			Size = [8, .5]
 		}
 	}
 
@@ -56,7 +56,6 @@ Components
 	{
 		Type = SimpleHit
 		PhysicsComponent = Physics
-		SourceShipCollisionDelay = Infinity
 
 		HitShield
 		{
@@ -64,11 +63,12 @@ Components
 			[
 				{
 				Type = ShieldDamage
-				Damage = 350
+				Damage = 500
 				}
 				{
 				Type = Impulse
 				Impulse = 0.5
+				
 				}
 			
 			]
@@ -80,11 +80,11 @@ Components
 			[
 				{
 				Type = PartDamage
-				Damage = 150
+				Damage = 75
 				}
 				{
 				Type = Impulse
-				Impulse = 0.1
+				Impulse = 0.25
 				}
 			]
 			MediaEffects = &~/Components/AntiBullet/HitBullet/MediaEffects

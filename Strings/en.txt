@@ -28,9 +28,9 @@ Parts
 	Aerogel2WedgeRIcon = "Aerogel 1x2 R"
 	Aerogel2WedgeRDesc = &AerogelDesc
 	
-	Machinegun = "Anti-Shield Minigun"
-	MachinegunIcon = "Minigun"
-	MachinegunDesc = "Compact anti-shield weapon that fires plasma bolts."
+	Machinegun = "Machinegun"
+	MachinegunIcon = "Machinegun"
+	MachinegunDesc = "Weaponized variant of the point defense system used to quickly disable shields."
 	
 	Plate2 = "Heavy Armor 1x2"
 	Plate2Icon = &Plate2
