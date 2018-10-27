@@ -1,3 +1,3 @@
 ![Mod Logo](logo.png)
 # Coalition Weapons Pack
-# Version 1.4.1 for Cosmoteer 0.14.3
+# Version 1.5 for Cosmoteer 0.14.4

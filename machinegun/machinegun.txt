@@ -230,8 +230,13 @@ Part : /BASE_PART
 			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			FireInterval = .05
+<<<<<<< HEAD
 			FiringArc = 190d
 			TargetingRange = 170
+=======
+			FiringArc = 220d
+			TargetingRange = 100
+>>>>>>> 9806c4ab53ac57c0055ece14ad733a960dd46d28
 			RotateSpeed = 360d
 			FireThresholdAngle = 1d
 			TargetSearchTriesPerFrame = 1
@@ -244,6 +249,22 @@ Part : /BASE_PART
 				Type = Bullet
 				Bullet = &<machinegun_shot.txt>
 				Spread = [-0.25d, 0.25d]
+			}
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
 			}
 		Emitter = TurretEmitter
 		}
@@ -262,7 +283,7 @@ Part : /BASE_PART
 			OperationalToggle = IsOperational
 			FireDelay = 0
 			AmmoStorage = BatteryStorage
-			AmmoUsed = 50
+			AmmoUsed = 25
 		}
 
 		FireEffect
