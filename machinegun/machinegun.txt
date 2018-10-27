@@ -34,8 +34,6 @@ Part : /BASE_PART
 	}
 	Components
 	{
-		
-		
 		BlueprintSprite0
 		{
 			File = "blueprints.png"
@@ -91,7 +89,7 @@ Part : /BASE_PART
 		Graphics
 		{
 			Type = Graphics
-			OperationalToggle = IsOperational,
+			OperationalToggle = IsOperational
 			Location = [.5, 1.5]
 			Floor
 			{
@@ -226,7 +224,7 @@ Part : /BASE_PART
 		Turret
 		{
 			Type = TurretWeapon
-			OperationalToggle = IsOperational,
+			OperationalToggle = IsOperational
 			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			FireInterval = .05
@@ -307,7 +305,7 @@ Part : /BASE_PART
 		TurretGraphics
 		{
 			Type = Graphics
-			OperationalToggle = IsOperational,
+			OperationalToggle = IsOperational
 			ChainedTo = Turret
 			Location = [.75, 0]
 			Rotation = 90d
@@ -358,7 +356,7 @@ Part : /BASE_PART
 		OperationEffects
 		{
 			Type = ToggleEffects
-			Toggle = IsOperational,
+			Toggle = IsOperational
 			Location = [.5, 1.5]
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
