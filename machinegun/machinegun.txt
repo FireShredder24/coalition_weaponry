@@ -230,13 +230,10 @@ Part : /BASE_PART
 			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			FireInterval = .05
-<<<<<<< HEAD
 			FiringArc = 190d
 			TargetingRange = 170
-=======
 			FiringArc = 220d
 			TargetingRange = 100
->>>>>>> 9806c4ab53ac57c0055ece14ad733a960dd46d28
 			RotateSpeed = 360d
 			FireThresholdAngle = 1d
 			TargetSearchTriesPerFrame = 1
