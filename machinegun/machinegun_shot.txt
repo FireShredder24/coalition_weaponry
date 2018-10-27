@@ -80,7 +80,7 @@ Components
 			[
 				{
 				Type = PartDamage
-				Damage = 75
+				Damage = 150
 				}
 				{
 				Type = Impulse
