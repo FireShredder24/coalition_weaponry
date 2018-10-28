@@ -225,7 +225,7 @@ Part : /BASE_PART
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [.5, 0.46]// Relative to upper-left corner of unrotated part.
+			Location = [.5, 0.26]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			FireInterval = .05
@@ -259,7 +259,7 @@ Part : /BASE_PART
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1, 0]
+			Location = [0.3, 0]
 			OperationalToggle = IsOperational
 			Bullet = &<machinegun_shot.txt>
 			AmmoStorage = BatteryStorage
@@ -271,7 +271,7 @@ Part : /BASE_PART
 			Type = TriggeredEffects
 			ChainedTo = Turret
 			Trigger = BulletEmitter
-			Location = [1.6, 0]
+			Location = [0.3, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects

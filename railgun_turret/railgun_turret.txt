@@ -30,7 +30,7 @@ Part : /BASE_PART
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [42.66, 64]
+		Size = [64, 64]
 	}
 	Components
 	{
@@ -378,26 +378,26 @@ Part : /BASE_PART
 		AmmoSprites
 		{
 			Type = AmmoSprites
-			Location = [1.5, 2]
+			Location = [1.5, 1.5]
 			AmmoStorage = AmmoStorage
 			Layer = "doodads_low"
 			AmmoLevels
 			[
 				{
-					File = "../ammo_storage/slug1.png"
-					Size = [2, 2]
+					File = "slugs1.png"
+					Size = [3, 3]
 				}
 				{
-					File = "../ammo_storage/slug2.png"
-					Size = [2, 2]
+					File = "slugs2.png"
+					Size = [3, 3]
 				}
 				{
-					File = "../ammo_storage/slug3.png"
-					Size = [2, 2]
+					File = "slugs3.png"
+					Size = [3, 3]
 				}
 				{
-					File = "../ammo_storage/slug4.png"
-					Size = [2, 2]
+					File = "slugs4.png"
+					Size = [3, 3]
 				}
 			]
 		}
