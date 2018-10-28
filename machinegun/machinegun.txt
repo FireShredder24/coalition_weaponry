@@ -17,6 +17,7 @@ Part : /BASE_PART
 	MaxHealth = 5000
 	InitialPenetrationResistance = 4
 	ProhibitAbove = 1
+	PenetrationRectType=Normal
 	AllowedDoorLocations
 	[
 		[-1, 1]
@@ -224,27 +225,16 @@ Part : /BASE_PART
 		Turret
 		{
 			Type = TurretWeapon
-			OperationalToggle = IsOperational
-			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
+			Location = [.5, 0.46]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
 			FireInterval = .05
-			FiringArc = 190d
-			TargetingRange = 170
 			FiringArc = 220d
-			TargetingRange = 100
-			RotateSpeed = 360d
+			RotateSpeed = 270d
 			FireThresholdAngle = 1d
 			TargetSearchTriesPerFrame = 1
-			AIFirepowerRating = 50
-			CanBeGivenExplicitTarget = true
-			IsDefensiveOnly = false
-
-			OldEmitter
-			{
-				Type = Bullet
-				Bullet = &<machinegun_shot.txt>
-				Spread = [-0.25d, 0.25d]
-			}
+			AIFirepowerRating = 400
+			Emitter = BulletEmitter
 
 			BlueprintArcSprite
 			{
@@ -261,22 +251,17 @@ Part : /BASE_PART
 				VertexColor = [255, 255, 255, 51]
 				QuadCount = 64
 			}
-		Emitter = TurretEmitter
 		}
 
-		TurretEmitter: Turret/OldEmitter
+		BulletEmitter
 		{
 			Type = BulletEmitter
-			Location
-			[
-				0.5
-				0
-			]
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
+			Location = [1, 0]
 			OperationalToggle = IsOperational
-			FireDelay = 0
+			Bullet = &<machinegun_shot.txt>
 			AmmoStorage = BatteryStorage
 			AmmoUsed = 25
 		}
@@ -285,7 +270,7 @@ Part : /BASE_PART
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
-			Trigger = TurretEmitter
+			Trigger = BulletEmitter
 			Location = [1.6, 0]
 			AnchorMediaEffects = true
 
@@ -307,7 +292,7 @@ Part : /BASE_PART
 			Type = Graphics
 			OperationalToggle = IsOperational
 			ChainedTo = Turret
-			Location = [.75, 0]
+			Location = [0, 0]
 			Rotation = 90d
 			OperationalDoodad
 			{

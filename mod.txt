@@ -1,6 +1,6 @@
 ID = "FireShredder24.CWP"
 Name = "Coalition Weapons Pack"
-Version = 1.4
+Version = 1.4.0001010101
 CompatibleGameVersions = ["0.14.3", "0.14.4"]
 ModifiesMultiplayer = true
 Author = "FireShredder24"
