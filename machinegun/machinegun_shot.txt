@@ -25,8 +25,8 @@ Components
 		RenderBucket = Lower
 		Sprite
 		{
-			Texture = "point_defense_shot.png"
-			Size = [2, .125]
+			Texture = "shot.png"
+			Size = [.5, .5]
 		}
 	}
 
