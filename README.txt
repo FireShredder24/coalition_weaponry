@@ -1,6 +1,6 @@
 ------------------------------
 		Coalition Weapons Pack
-			Version 1.2.1
+			Version 1.5.1
 					Author:
 			FireShredder24
 ------------------------------

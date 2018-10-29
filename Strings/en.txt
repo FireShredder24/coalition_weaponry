@@ -6,7 +6,7 @@ Parts
 	
 	Aerogel = "Aerogel Armor"
 	AerogelIcon = "Aerogel"
-	AerogelDesc = "A lighter, less penetration-resistant type of armor that is mostly good at deflecting laser fire."
+	AerogelDesc = "An extremely light, low-protection armor.  It's better than corridors."
 	
 	AerogelWedge = "Aerogel Armor Wedge"
 	AerogelWedgeIcon = "Aerogel Wedge"
@@ -30,7 +30,7 @@ Parts
 	
 	Machinegun = "Anti-Shield Minigun"
 	MachinegunIcon = "Minigun"
-	MachinegunDesc = "Compact anti-shield weapon that fires plasma bolts."
+	MachinegunDesc = "A compact anti-shield weapon that fires plasma bolts.  3000 DPS"
 	
 	Plate2 = "Heavy Armor 1x2"
 	Plate2Icon = &Plate2
@@ -38,11 +38,11 @@ Parts
 	
 	SmallIntThruster = "Small Internal Thruster"
 	SmallIntThrusterIcon = "Internal Thruster"
-	SmallIntThrusterDesc = "A thruster that uses some wacky loophole in Special Relativity to propel the ship without a nozzle!"
+	SmallIntThrusterDesc = "A non-Newtonian propulsion drive that uses warp fields to propel starships at sublight speeds."
 
 	Blink = "Blink Drive"
 	BlinkIcon = &Blink
-	BlinkDesc = "A part that, when detonated, will throw the ship in a random direction at high speed.  (depends on the size of the ship)"
+	BlinkDesc = "A part that, when `detonated`, will throw the ship in a random direction at high speed."
 
 	Warhead = "Small Warhead"
 	WarheadIcon = &Warhead
@@ -50,7 +50,7 @@ Parts
 	
 	CIWS = "CIWS"
 	CIWSIcon = "CIWS"
-	CIWSDesc = "A Close-In Weapons System, used primarily to tear through enemy subsystems.  Weak against shields."
+	CIWSDesc = "A Close-In Weapons System, used primarily to tear through enemy subsystems.  Weak against shields.  8000 DPS"
 
 	BunkRoom = "Dormitory"
 	BunkRoomIcon = "Dorm"
@@ -58,7 +58,7 @@ Parts
 
 	Railgun = "Railgun"
 	RailgunIcon = "Railgun"
-	RailgunDesc = "A super high-velocity weapon that accelerates hunks of tungsten to insane speeds.  Is capable of turning Cerberus into Swiss cheese from a kilometer and a half away when used in numbers."
+	RailgunDesc = "A super high-velocity weapon that accelerates hunks of tungsten to insane speeds.  Is capable of turning Cerberus into Swiss cheese from a kilometer and a half away when used in numbers.  "
 
 	SlugFactory = "MAC Round Factory"
 	SlugFactoryIcon = "MAC Round Factory"
@@ -67,10 +67,6 @@ Parts
 	SlugStorage = "MAC Round Storage"
 	SlugStorageIcon  = "MAC Storage"
 	SlugStorageDesc = "A part that stores the ferric tungsten slugs fired by MACs."
-
-	LAWS = "LAWS"
-	LAWSIcon = "LAWS"
-	LAWSDesc = "Basically, laser point defense.  (based off of real US navy anti-missile weapon)."
 
 	SolarCell = "Solar Cell"
 	SolarCellIcon = "Solar Cell"
@@ -82,7 +78,7 @@ Parts
 
 	RailTurretFS24 = "MAC Turret"
 	RailTurretFS24Icon = &RailTurretFS24
-	RailTurretFS24Desc = "A weapon that uses magnets to accelerate ferric tungsten slugs to incredible velocities, tearing through everything in its path."
+	RailTurretFS24Desc = "A weapon that uses magnets to accelerate ferric tungsten slugs to incredible velocities, tearing through everything in its path. 134 DPS"
 
 	CorundumCarbide = "Boron Nitride Armor"
 	CorundumCarbideIcon = "Boron Nitride"
@@ -122,7 +118,7 @@ Parts
 
 	EMPCannonLarge = "Large EMP Cannon"
 	EMPCannonLargeIcon = "EMP Cannon"
-	EMPCannonLargeDesc = "A weapon that generates an electromagnetic pulse that disables enemy shields and electronics."
+	EMPCannonLargeDesc = "A weapon that generates an electromagnetic pulse that disables enemy shields and electronics. 5000 Shield DPS"
 
 	FireControl = "Fire Control"
 	FireControlIcon = "Fire Control Station"
