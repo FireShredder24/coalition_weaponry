@@ -5,7 +5,7 @@ CompatibleGameVersions = ["0.14.3", "0.14.4"]
 ModifiesMultiplayer = true
 Author = "FireShredder24"
 Logo = "logo.png"
-Description = "This mod is loosely based on US Navy and UNSC technology and weapons, and was also designed to defeat the Star Wars: A Cosmos Divided mod in battle. The World War II Mod is an add-on to this mod, and it adds more cannons and projectile weaponry."
+Description = "This mod is loosely based on US Navy and UNSC technology and weapons, and was also designed to defeat the Star Wars: A Cosmos Divided mod in battle. The World War II Mod is an add-on to this mod; it adds more cannons and projectile weaponry."
 		
 StringsFolder = "Strings"
 Actions
