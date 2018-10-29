@@ -1,9 +1,9 @@
-ID = condensed_cell
-MaxCarried = 1
+ID = mini_railgun_slugs
+MaxCarried = 16
 MaxCarriedSprites = 1
 CarriedSprite
 {
-	File = "condensed_cell.png"
+	File = "mini-slugs.png"
 	Size = [1, 1]
 }
 CarriedSpriteOffset = [0, .25]

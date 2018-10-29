@@ -54,6 +54,11 @@ Actions
 		ToAdd = &<Ammo/slug.txt>
 	}
 	{
+		Action = Add
+		AddTo = "<Ammo/ammo.txt>/Ammo"
+		ToAdd = &<Ammo/minislugs.txt>
+	}
+	{
 		Action = Overrides
 		OverrideIn = "<ships/terran/cannon_med/particles/cannon_smoke_med.txt>"
 		Overrides
