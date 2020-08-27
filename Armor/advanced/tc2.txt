@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/TungstenCarbide2"
 	IconNameKey = "Parts/TungstenCarbide2Icon"
-	IDString = FireShredder24.tc2
+	ID = FireShredder24.tc2
 	OtherIDs = ["tc2"]
 	EditorGroup = "CWP"
 	EditorReplacementPartID = tc
@@ -16,7 +16,7 @@ Part : /BASE_PART
 	InitialPenetrationResistance = 15
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0
-	Density = 8
+	Density = 4
 	IsRotateable = true
 	IsWalled = true
 	AllowedDoorLocations = []

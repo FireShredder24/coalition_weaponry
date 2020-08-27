@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/AerogelWedge"
 	IconNameKey = "Parts/AerogelWedgeIcon"
-	IDString = FireShredder24.aerogel_wedge
+	ID = FireShredder24.aerogel_wedge
 	OtherIDs = ["aerogel_wedge"]
 	EditorGroup = "Defenses"
 	DescriptionKey = "Parts/AerogelWedgeDesc"

@@ -6,14 +6,14 @@ ModifiesMultiplayer = true
 Author = "FireShredder24"
 Logo = "logo.png"
 Description = "This mod is loosely based on US Navy and UNSC technology and weapons, and was also designed to defeat the Star Wars: A Cosmos Divided mod in battle. The World War II Mod is an add-on to this mod; it adds more cannons and projectile weaponry."
-		
+
 StringsFolder = "Strings"
 Actions
 [
 	{
 		Action = AddMany
 		AddTo = "<ships/terran/terran.txt>/Terran/Parts"
-		ManyToAdd 
+		ManyToAdd
 		[
 			&<sniper_laser/sniper_laser.txt>/Part
 			&<Armor/aerogel/aerogel.txt>/Part
@@ -22,33 +22,33 @@ Actions
 			&<Armor/aerogel2_wedge/aerogel2_wedge_L.txt>/Part
 			&<Armor/aerogel2_wedge/aerogel2_wedge_R.txt>/Part
 			&<Armor/plate/plate.txt>/Part
-			&<machinegun/machinegun.txt>/Part
+			//&<machinegun/machinegun.txt>/Part
 			&<Armor/plate2/plate2.txt>/Part
 			&<small_inthruster/small_inthruster.txt>/Part
-			&<warhead/warhead.txt>/Part
+			/*&<warhead/warhead.txt>/Part*/
 			&<ciws/ciws.txt>/Part
 			&<bunkRoom/bunkRoom.txt>/Part
-			// &<railgun/railgun.txt>/Part
+			/*// &<railgun/railgun.txt>/Part
 			&<ammo_storage/ammo_storage.txt>/Part
-			&<slug_factory/slug_factory.txt>/Part
+			&<slug_factory/slug_factory.txt>/Part*/
 			&<solar_cell/solar_cell.txt>/Part
-			&<warhead/impulse_mine.txt>/Part
+			/*&<warhead/impulse_mine.txt>/Part
 			&<blink_drive/ftl_drive.txt>/Part
-			&<railgun_turret/railgun_turret.txt>/Part
+			&<railgun_turret/railgun_turret.txt>/Part*/
 			&<Armor/advanced/tc.txt>/Part
 			&<Armor/advanced/tc2.txt>/Part
 			&<Armor/advanced/bn.txt>/Part
-			&<Armor/advanced/bn2.txt>/Part
+			&<Armor/advanced/bn2.txt>/Part/*
 //			&<warhead/impact_mine.txt>/Part
 			&<artificial_mass/structure.txt>/Part
 			&<damage_control/cockpit.txt>/Part
 			&<wireless_charger/cockpit.txt>/Part
 			&<emp_cannon/emp.txt>/Part
-			&<fire_control/fire_control.txt>/Part
+			&<fire_control/fire_control.txt>/Part*/
 			// &<hallway/hallway.txt>/Part
 		]
 	}
-	{
+	/*{
 		Action = Add
 		AddTo = "<Ammo/ammo.txt>/Ammo"
 		ToAdd = &<Ammo/slug.txt>
@@ -57,7 +57,7 @@ Actions
 		Action = Add
 		AddTo = "<Ammo/ammo.txt>/Ammo"
 		ToAdd = &<Ammo/minislugs.txt>
-	}
+	}*/
 	{
 		Action = Overrides
 		OverrideIn = "<ships/terran/cannon_med/particles/cannon_smoke_med.txt>"

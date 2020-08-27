@@ -2,12 +2,12 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/SmallIntThruster"
 	IconNameKey = "Parts/SmallIntThrusterIcon"
-	IDString = FireShredder24.small_int_thruster
-	OtherIDs = ["small_int_thruster"]
+	ID = FireShredder24.small_int_thruster
+	OtherIDs = [small_int_thruster]
 	EditorGroup = "Flight"
 	DescriptionKey = "Parts/SmallIntThrusterDesc"
 	Cost = 600
-	TypeCategories = [thruster]
+	TypeCategories = [thruster, uses_power]
 	Size = [1, 1]
 	PhysicalRect = [0, 0, 1, 1]
 	SaveRect = &PhysicalRect
@@ -36,28 +36,6 @@ Part : /BASE_PART
 	}
 	Components
 	{
-		
-		
-		BlueprintSprite0
-		{
-			File = "blueprints.png"
-			Size = [1, 2]
-			Offset = [0, 0.5]
-		Type=BlueprintSprite;}
-		PowerUIStats
-		{
-			Min = .01666
-			Ideal = .0333
-			Type = UIStats
-			Stat = Power
-		}
-		CrewUIStats
-		{
-			Min = .0625
-			Ideal = .125
-			Type = UIStats
-			Stat = Crew
-		}
 		IsOperational
 		{
 			Type = MultiToggle
@@ -73,15 +51,27 @@ Part : /BASE_PART
 			Type = UIToggle
 			ToggleID = "on_off"
 			Default = 1
-			ToggledOnChoices = [1]
 		}
 
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [1, 2]
+			Offset = [0, 0.5]
+		Type=BlueprintSprite;
+		}
 		BatteryStorage
 		{
-			Type = AmmoConsumer
+			Type = AmmoStorage
 			AmmoType = battery
 			MaxAmmo = 1000
-			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+		}
+		BatteryConsumer
+		{
+			Type = AmmoConsumer
+			Storage = BatteryStorage
+			AmmoType = battery
+			DefaultPriority = &/PRIORITIES/Thruster_Supply
 			LowConsumeJobPriority = &/PRIORITIES/Thruster_Supply/Low
 			HighConsumeJobPriority = &/PRIORITIES/Thruster_Supply/High
 			EmptyConsumeJobPriority = &/PRIORITIES/Thruster_Supply/Empty
@@ -267,28 +257,13 @@ Part : /BASE_PART
 		{
 			Type = Thruster
 			OperationalToggle = IsOperational,
-			Location = [0.5, 1.5]// Relative to upper-left corner of unrotated part.
+			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation = 1
 			MinUncommandedActivation = 0
 			MaxUncommandedActivation = &MaxActivation
-			FuelStorage = BatteryStorage
-			FuelUsagePerSecond = &../../FuelUsage
-		}
-
-		LateralThruster
-		{
-			Type = Thruster
-			OperationalToggle = IsOperational,
-			ChainedTo = MainThruster
-			Rotation = 90d// Relative to main thruster.
-			Force = &../../ThrusterForce
-			MinActivation = -.5
-			MaxActivation = .5
-			MinUncommandedActivation = 0
-			MaxUncommandedActivation = 0
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
@@ -394,5 +369,14 @@ Part : /BASE_PART
 				}
 			]
 		}
+	}
+	Stats
+	{
+		ThrusterForce = &~/Part/ThrusterForce
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = 1
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
 	}
 }

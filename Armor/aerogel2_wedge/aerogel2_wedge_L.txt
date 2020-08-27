@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/Aerogel2WedgeL"
 	IconNameKey = "Parts/Aerogel2WedgeLIcon"
-	IDString = FireShredder24.aerogel2_wedge_L
+	ID = FireShredder24.aerogel2_wedge_L
 	OtherIDs = ["aerogel2_wedge_L"]
 	EditorGroup = "Defenses"
 	DescriptionKey = "Parts/Aerogel2WedgeLDesc"
@@ -12,7 +12,7 @@ Part : /BASE_PART
 	AllowedContiguity = [Right, Bottom]
 	SelectionTypeID = "armor"
 	MaxHealth = 4000
-	AreaDamageBlockFactor = .25
+	AreaDamageBlockFactor = .75
 	Flammable = false
 	CreatePartPerTileWhenDestroyed = ""
 	CreatePartWhenDestroyed = structure2_wedge_L

@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/SolarCell"
 	IconNameKey = "Parts/SolarCellIcon"
-	IDString = FireShredder24.solar_cell
+	ID = FireShredder24.solar_cell
 	OtherIDs = ["solar_cell"]
 	EditorGroup = "Power"
 	DescriptionKey = "Parts/SolarCellDesc"
@@ -24,28 +24,24 @@ Part : /BASE_PART
 	}
 	Components
 	{
-		
+
 		BlueprintSprite0
 		{
 			File = "blueprints.png"
 			Size = [1, 2]
-		Type=BlueprintSprite;}
-		PowerUIStats
-		{
-			Provided = 8
-			Type = UIStats
-			Stat = Power
+			Type=BlueprintSprite;
 		}
 		BatteryStorage
 		{
 			Type = AmmoStorage
 			AmmoType = battery
-			MaxAmmo = 8000
+			MaxAmmo = 3000
 			StartingAmmo = &MaxAmmo
 			SuppliesAmmo = true
-			MaxIndicatorAmmo = 1000
-			AssumeAlwaysHasAmmo = true
-			WaitPerDistToNextClosest = .1
+			MaxAmmoPickUp = 1000
+			ExpectedAmmoGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
+			ToggleOnAmmo = 1001
+			ToggleOffAmmo = 1000
 		}
 		BatteryProducer
 		{
@@ -142,26 +138,6 @@ Part : /BASE_PART
 				}
 				{
 					File = "battery3.png"
-					Size = [1, 2]
-				}
-				{
-					File = "battery4.png"
-					Size = [1, 2]
-				}
-				{
-					File = "battery5.png"
-					Size = [1, 2]
-				}
-				{
-					File = "battery6.png"
-					Size = [1, 2]
-				}
-				{
-					File = "battery7.png"
-					Size = [1, 2]
-				}
-				{
-					File = "battery8.png"
 					Size = [1, 2]
 				}
 			]

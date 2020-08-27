@@ -42,7 +42,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = ShieldDamage
+					Type = Damage
 					Damage = 400
 				}
 				{
@@ -58,7 +58,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = PartDamage
+					Type = Damage
 					Damage = 400
 				}
 				{
@@ -92,7 +92,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = PartDamage
+					Type = Damage
 					Damage = 500
 				}
 				{
@@ -118,11 +118,11 @@ Components
 			HitEffects
 			[
 				{
-					Type = PartDamage
+					Type = Damage
 					Damage = 25
 				}
 				{
-					Type = PartFire
+					Type = Fire
 					FireChance = .05
 				}
 			]

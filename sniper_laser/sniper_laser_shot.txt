@@ -13,6 +13,13 @@ Components
 		Density = 0.1
 	}
 
+	Targetable
+	{
+		Type = Targetable
+		Health = 250
+		TargetCategory = "laser"
+	}
+
 	Death
 	{
 		Type = DeathByLifetime
@@ -48,7 +55,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = ShieldDamage
+					Type = Damage
 					Damage = 250
 				}
 				{
@@ -64,7 +71,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = PartDamage
+					Type = Damage
 					Damage = 800
 				}
 				{
@@ -81,7 +88,7 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "small_laser_hit.wav"
+					Sound = "hit.wav"
 					Volume = .4
 					SpeedVariation = .4
 				}
@@ -98,7 +105,7 @@ Components
 			HitEffects
 			[
 				{
-					Type = PartDamage
+					Type = Damage
 					Damage = 200
 				}
 				{
@@ -113,7 +120,7 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "small_laser_hit.wav"
+					Sound = "hit.wav"
 					Volume = .3
 					SpeedVariation = .4
 				}

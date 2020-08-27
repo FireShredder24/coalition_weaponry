@@ -2,13 +2,13 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/CIWS"
 	IconNameKey = "Parts/CIWSIcon"
-	IDString = FireShredder24.ciws
+	ID = FireShredder24.ciws
 	OtherIDs = ["ciws"]
 	EditorGroup = "CWP"
 	DescriptionKey = "Parts/CIWSDesc"
 	Cost = 5000
-	AIValue = 10
-	TypeCategories = [weapon, weapon_using_ammo]
+	AIValue = &Cost
+	TypeCategories = [weapon, uses_ammo, is_crewed]
 	Size = [2, 2]
 	PhysicalRect = [0, 1, 2, 1]
 	SaveRect = &PhysicalRect
@@ -17,6 +17,7 @@ Part : /BASE_PART
 	SelectionTypeID = "weapons"
 	MaxHealth = 20000
 	InitialPenetrationResistance = 10
+	PenetrationRectType = Normal
 	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
@@ -58,20 +59,6 @@ Part : /BASE_PART
 	}
 	Components
 	{
-		
-		BlueprintSprite0
-		{
-			File = "blueprints.png"
-			Size = [2, 3]
-			Offset = [0, -0.5]
-		Type=BlueprintSprite;}
-		CrewUIStats
-		{
-			Min = 3
-			Ideal = 10
-			Type = UIStats
-			Stat = Crew
-		}
 		IsOperational
 		{
 			Type = MultiToggle
@@ -97,6 +84,14 @@ Part : /BASE_PART
 			Default = 1
 			ToggledOnChoices = [1]
 		}
+		BlueprintSprite0
+		{
+			File = "blueprints.png"
+			Size = [2, 3]
+			Offset = [0, -0.5]
+			Type = BlueprintSprite;
+		}
+
 		LoadedAmmo
 		{
 			Type = AmmoStorage
@@ -107,10 +102,16 @@ Part : /BASE_PART
 		}
 		AmmoStorage
 		{
-			Type = AmmoConsumer
+			Type = AmmoStorage
 			AmmoType = bullet
 			MaxAmmo = 25
-			Priorities = { Low=&../LowConsumeJobPriority; High=&../HighConsumeJobPriority; Empty=&../EmptyConsumeJobPriority }
+		}
+		AmmoConsumer
+		{
+			Type = AmmoConsumer
+			AmmoType = bullet
+			Storage = AmmoStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			LowConsumeJobPriority = &/PRIORITIES/Weapon_Supply/Low
 			HighConsumeJobPriority = &/PRIORITIES/Weapon_Supply/High
 			EmptyConsumeJobPriority = &/PRIORITIES/Weapon_Supply/Empty
@@ -247,13 +248,15 @@ Part : /BASE_PART
 			TargetSearchTriesPerFrame = 1
 			AIFirepowerRating = 1000
 			FireModeToggle = FireModeToggle
+			Emitter = BulletEmitter
 
-			OldEmitter
-			{
-				Type = Bullet
-				Bullet = &<ciws_bullet.txt>
-				Spread = [-0.5d, 0.5d]
-			}
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = FireModeToggle
+				}
+			]
 
 			BlueprintArcSprite
 			{
@@ -270,30 +273,28 @@ Part : /BASE_PART
 				VertexColor = [255, 255, 255, 51]
 				QuadCount = 64
 			}
-		Emitter = TurretEmitter
 		}
 
-		TurretEmitter: Turret/OldEmitter
+		BulletEmitter
 		{
 			Type = BulletEmitter
-			Location
-			[
-				2
-				0
-			]
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
+			Location = [2, 0]
 			OperationalToggle = IsOperational
+			Bullet = &<ciws_bullet.txt>
+			Spread = [-0.5d, 0.5d]
 			AmmoStorage = LoadedAmmo
 			AmmoUsed = 1
+			Recoil = 10
 		}
 
 		FireEffect
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
-			Trigger = TurretEmitter
+			Trigger = BulletEmitter
 			Location = [2, 0]
 
 			MediaEffects
@@ -319,15 +320,13 @@ Part : /BASE_PART
 		AmmoLoader
 		{
 			Type = AmmoConverter
-			OnlyWhenOperational = false
 			FromStorage = AmmoStorage
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 5
-			DelayTrigger = TurretEmitter
-			DelayAfterTrigger = .01
-
-			}
+			DelayTrigger = Turret
+			DelayAfterTrigger = .25
+		}
 
 		AmmoLoader_ConvertEffects
 		{
@@ -347,7 +346,7 @@ Part : /BASE_PART
 		{
 			Type = PartCrew
 			Crew = 1
-			Priorities = { First=&../FirstCrewJobPriority; Additional=&../AdditionalCrewJobPriority; Full=&../FullCrewJobPriority }
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
 			FirstCrewJobPriority = &/PRIORITIES/Weapon_Crew/First
 			AdditionalCrewJobPriority = &/PRIORITIES/Weapon_Crew/Additional
 			FullCrewJobPriority = &/PRIORITIES/Weapon_Crew/Full
@@ -451,7 +450,7 @@ Part : /BASE_PART
 			Location = [.5, 0]
 			Rotation = 90d
 			Layer = "weapons"
-			ResetAnimationTrigger = TurretEmitter
+			ResetAnimationTrigger = BulletEmitter
 			AtlasSprite
 			{
 				AnimationFiles
@@ -517,23 +516,32 @@ Part : /BASE_PART
 			FactorHitEffectsWith = AmmoStorage
 			HitEffects
 			[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 10000
+				Radius = 4
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				Filter
 				{
-					Type = PartAreaDamage
-					DamageVsOperationalPerTile = 600
-					RadiusVsOperational = 4
-					DamageVsStructurePerTile = 300
-					RadiusVsStructure = 3
-					Delay = .05
-					AllowFriendlyDamage = true
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
 				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 2000
+				Radius = 3
+				Delay = .05
+				Filter
 				{
-					Type = AreaFires
-					FireChancePerTile = .1
-					FireRadius = 4
-					FireFalloff = 0
-					Delay = .05
-					AllowFriendlyFires = true
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
 				}
+			}
 			]
 		}
 

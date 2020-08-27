@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/Plate2"
 	IconNameKey = "Parts/Plate2Icon"
-	IDString = FireShredder24.Plate2
+	ID = FireShredder24.Plate2
 	OtherIDs = ["Plate2"]
 	EditorGroup = "Defenses"
 	EditorReplacementPartID = plate

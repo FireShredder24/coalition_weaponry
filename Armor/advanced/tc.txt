@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/TungstenCarbide"
 	IconNameKey = "Parts/TungstenCarbideIcon"
-	IDString = FireShredder24.tc
+	ID = FireShredder24.tc
 	OtherIDs = ["tc"]
 	EditorGroup = "CWP"
 	DescriptionKey = "Parts/TungstenCarbideDesc"

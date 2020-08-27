@@ -2,7 +2,7 @@ Part : /BASE_PART
 {
 	NameKey = "Parts/Aerogel"
 	IconNameKey = "Parts/AerogelIcon"
-	IDString = FireShredder24.aerogel
+	ID = FireShredder24.aerogel
 	OtherIDs = ["aerogel"]
 	EditorGroup = "Defenses"
 	DescriptionKey = "Parts/AerogelDesc"
@@ -10,7 +10,7 @@ Part : /BASE_PART
 	Size = [1, 1]
 	SelectionTypeID = "aerogel"
 	MaxHealth = 3500
-	AreaDamageBlockFactor = .25
+	AreaDamageBlockFactor = .75
 	Flammable = false
 	InitialPenetrationResistance = 3
 	CreatePartPerTileWhenGrabbed = ""
